@@ -9,14 +9,16 @@ pipeline {
         stage('Initialize Terraform') {
             steps {
                 dir('terraform') {
-                    sh 'terraform init'
+                    // Run Terraform init without nohup
+                    bat 'terraform init'  // Use 'bat' for Windows shell commands
                 }
             }
         }
         stage('Apply Terraform') {
             steps {
                 dir('terraform') {
-                    sh 'terraform apply -auto-approve'
+                    // Run Terraform apply without nohup
+                    bat 'terraform apply -auto-approve' // Use 'bat' for Windows shell commands
                 }
             }
         }
