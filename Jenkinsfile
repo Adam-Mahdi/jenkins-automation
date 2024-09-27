@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Adam-Mahdi/jenkins-automation'  // Replace with your repo
+                git branch: 'main', url: 'https://github.com/Adam-Mahdi/jenkins-automation.git'
             }
         }
         stage('Initialize Terraform') {
