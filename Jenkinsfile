@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCESS_KEY_ID = credentials('AKIAWIJIUTXGY25V2V5E')
-        AWS_SECRET_ACCESS_KEY = credentials('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')
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
     }
     stages {
         stage('Checkout') {
@@ -14,10 +14,8 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        // Unix-specific command for initialization
                         sh 'terraform init'
                     } else {
-                        // Windows-specific command for initialization
                         bat 'terraform init'
                     }
                 }
@@ -27,10 +25,8 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        // Unix-specific command to apply terraform
                         sh 'terraform apply -auto-approve'
                     } else {
-                        // Windows-specific command to apply terraform
                         bat 'terraform apply -auto-approve'
                     }
                 }
